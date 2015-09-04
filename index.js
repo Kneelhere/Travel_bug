@@ -2,6 +2,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var path = require("path");
+var views = path.join(process.cwd(), "views/");
 
 //serving js file
 app.use("vendor", express.static("public"));
