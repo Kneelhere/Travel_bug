@@ -1,0 +1,25 @@
+{
+  "name": "travel_bug",
+  "version": "1.0.0",
+  "description": "WDI 21 SF - Project One DESCRIPTION",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kneelhere/Travel_bug.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kneelhere/Travel_bug/issues"
+  },
+  "homepage": "https://github.com/Kneelhere/Travel_bug#readme",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.5",
+    "underscore": "^1.8.3"
+  }
+}
