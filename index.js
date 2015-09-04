@@ -10,7 +10,7 @@ app.use("vendor", express.static("public"));
 
 //ROUTES
 app.get("/", function(req,res){
-	res.send("Hello World");
+	res.sendFile(path.join(views + 'index.html'));
 })
 
 var listener = app.listen(3000, function(){
