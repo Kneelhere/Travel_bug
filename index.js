@@ -3,6 +3,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
+//serving js file
+app.use("vendor", express.static("public"));
 
 //ROUTES
 app.get("/", function(req,res){
