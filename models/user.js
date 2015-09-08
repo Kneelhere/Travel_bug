@@ -9,3 +9,7 @@ var UserSchema = new Schema({
 	passwordDigest: {type: String, require: true},
 	createdAt: {type: Date, default: Date.now()}
 });
+
+// user model, so it can be required else where
+var User = mongoose.model('User', UserSchema);
+module.exports = User;
