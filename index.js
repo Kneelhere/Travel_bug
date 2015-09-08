@@ -12,6 +12,36 @@ app.use(bodyParser.urlencoded({extended: true}));
 //serving js file
 app.use("/vendor", express.static("public"));
 app.use("/static", express.static("bower_components"));
+
+// create a session
+app.use(
+	session({
+		secret: 'impossible-to-crack-key',
+		resave: false,
+		saveUninitialized: true
+	})
+);
+
+app.use(function(req, res, next){
+	req.login = function(user){
+		req.session.userId = user._id;
+	};
+	// find current user
+	req.currentUser = function(cb) {
+		db.User.findOne({_id: req.session.userId},
+			function(err,user){
+				req.user = user;
+				cb(null,user);
+			})
+	};
+	// logout
+	req.logout = function(){
+		req.session.userId = null;
+		req.user = null;
+	}
+	next();
+});
+
 //ROUTES
 //home page
 app.get("/", function(req,res){
@@ -37,15 +67,17 @@ app.post("/signup", function signup(req,res){
 	var password = user.password;
 	// creates new user
 	db.User.createSecure(email, password, function(){
-		res.send(email + " is registered!\n");
-		// db.User.authenticate(email, password, function (err, user){
-		// 	if(err){
-		// 		console.log(err);
-		// 		return res.sendStatus(401);
-		// 	}
-		// 	req.login(user);
-		// 	res.redirect("/");
-		// });
+		if(password.length < 6){
+			alert("Password needs to have a min of 6 characters");
+		}
+		db.User.authenticate(email, password, function (err, user){
+			if(err){
+				console.log(err);
+				return res.sendStatus(401);
+			}
+			req.login(user);
+			res.redirect("/");
+		});
 	});
 });
 
@@ -54,7 +86,8 @@ app.post("/login", function login(req,res){
 	var email = user.email;
 	var password = user.password;
 	db.User.authenticate(email, password, function(err,user){
-		res.send(email + " is logged in \n");
+		req.login(user);
+		res.redirect("/");
 	});
 });
 
