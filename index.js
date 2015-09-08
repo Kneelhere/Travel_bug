@@ -5,6 +5,7 @@ var app = express();
 var path = require("path");
 var views = path.join(process.cwd(), "views/");
 var db = require("./models");
+var session = require("express-session");
 
 app.use(bodyParser.urlencoded({extended: true}));
 
