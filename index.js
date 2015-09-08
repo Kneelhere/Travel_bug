@@ -48,6 +48,15 @@ app.post("/signup", function signup(req,res){
 	});
 });
 
+app.post("/login", function login(req,res){
+	var user = req.body.user;
+	var email = user.email;
+	var password = user.password;
+	db.User.authenticate(email, password, function(err,user){
+		res.send(email + " is logged in \n");
+	});
+});
+
 var listener = app.listen(3000, function(){
 	console.log("Listening on port " + listener.address().port);
 });

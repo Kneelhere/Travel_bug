@@ -25,6 +25,26 @@ UserSchema.statics.createSecure = function (email, password, cb){
 	});
 };
 
+//authentication for login
+UserSchema.statics.authenticate = function(email, password, cb) {
+	//finds user by email
+	this.findOne({email: email}, function(err, user){
+		if (user === null){
+			cb("Can not find user with that email", null);
+		// if found check for correct password
+		} else if(user.checkPassword(password)) {
+			cb(null,user);
+		} else {
+			cb("password incorrect", user)
+		}
+	});
+};
+
+// compare password user enters with hashed password (`passwordDigest`)
+UserSchema.methods.checkPassword = function (password) {
+  return bcrypt.compareSync(password, this.passwordDigest);
+};
+
 // user model
 var User = mongoose.model('User', UserSchema);
 // required for elsewhere
