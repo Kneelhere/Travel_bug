@@ -17,6 +17,10 @@ app.get("/login", function (req,res){
 	res.sendFile(path.join(views + 'login.html'));
 })
 
+app.get("/signup", function (req,res){
+	res.sendFile(path.join(views + 'signup.html'));
+})
+
 var listener = app.listen(3000, function(){
 	console.log("Listening on port " + listener.address().port);
 });
