@@ -28,24 +28,25 @@ app.get("/signup", function (req,res){
 })
 
 //where the user submits signup form
-// app.post("/signup", function (req,res){
-// 	// grabs the user from the params
-// 	var user = req.body.user;
-// 	// gets email and password
-// 	var email = user.email;
-// 	var password = user.password;
-// 	// creates new user
-// 	db.User.createSecure(email, password, function(){
-// 		db.User.authenticate(email, password, function (err, user){
-// 			if(err){
-// 				console.log(err);
-// 				return res.sendStatus(401);
-// 			}
-// 			req.login(user);
-// 			res.redirect("/");
-// 		});
-// 	});
-// });
+app.post("/signup", function signup(req,res){
+	// grabs user from the params
+	var user = req.body.user;
+	// gets email and password
+	var email = user.email;
+	var password = user.password;
+	// creates new user
+	db.User.createSecure(email, password, function(){
+		res.send(email + " is registered!\n");
+		// db.User.authenticate(email, password, function (err, user){
+		// 	if(err){
+		// 		console.log(err);
+		// 		return res.sendStatus(401);
+		// 	}
+		// 	req.login(user);
+		// 	res.redirect("/");
+		// });
+	});
+});
 
 var listener = app.listen(3000, function(){
 	console.log("Listening on port " + listener.address().port);
