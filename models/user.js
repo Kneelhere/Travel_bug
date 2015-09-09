@@ -12,6 +12,11 @@ var UserSchema = new Schema({
 	createdAt: {type: Date, default: Date.now()}
 });
 
+var PlaceSchema = new Schema({
+	place: {type: String, required: true},
+	description: {type: String, required: true},
+});
+
 //create a new user with a hashed password
 UserSchema.statics.createSecure = function (email, password, firstName, lastName, cb){
 	//references the schema
