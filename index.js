@@ -77,10 +77,8 @@ app.post("/signup", function signup(req,res){
 	// gets email and password
 	var email = user.email;
 	var password = user.password;
-	var firstName = user.firstName;
-	var lastName = user.lastName;
 	// creates new user
-	db.User.createSecure(email, password, firstName, lastName, function(){
+	db.User.createSecure(email, password, function(){
 		// if(password.length < 6){
 		// 	alert("Password needs to have a min of 6 characters");
 		// }
@@ -90,6 +88,7 @@ app.post("/signup", function signup(req,res){
 				return res.sendStatus(401);
 			}
 			req.login(user);
+			res.cookie("guid", user._id, { signed: true });
 			res.redirect("/profile");
 		});
 	});
