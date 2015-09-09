@@ -90,7 +90,7 @@ app.post("/signup", function signup(req,res){
 				return res.sendStatus(401);
 			}
 			req.login(user);
-			res.redirect("/");
+			res.redirect("/profile");
 		});
 	});
 });
@@ -101,7 +101,7 @@ app.post("/login", function login(req,res){
 	var password = user.password;
 	db.User.authenticate(email, password, function(err,user){
 		req.login(user);
-		res.redirect("/");
+		res.redirect("/profile");
 	});
 });
 

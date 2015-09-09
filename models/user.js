@@ -54,5 +54,8 @@ UserSchema.methods.checkPassword = function (password) {
 
 // user model
 var User = mongoose.model('User', UserSchema);
+// places model
+var Place = mongoose.model('Place', PlaceSchema);
 // required for elsewhere
 module.exports = User;
+module.exports = Place;
