@@ -69,6 +69,8 @@ app.post("/signup", function signup(req,res){
 	// gets email and password
 	var email = user.email;
 	var password = user.password;
+	var firstName = user.firstName;
+	var lastName = user.lastName;
 	// creates new user
 	db.User.createSecure(email, password, function(){
 		// if(password.length < 6){
