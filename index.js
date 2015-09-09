@@ -58,6 +58,10 @@ app.get("/signup", function (req,res){
 	res.sendFile(path.join(views + 'signup.html'));
 })
 
+app.get("/profile", function(req,res){
+	res.sendFile(path.join(views + 'profile.html'));
+})
+
 //where the user submits signup form
 app.post("/signup", function signup(req,res){
 	// grabs user from the params
@@ -67,9 +71,9 @@ app.post("/signup", function signup(req,res){
 	var password = user.password;
 	// creates new user
 	db.User.createSecure(email, password, function(){
-		if(password.length < 6){
-			alert("Password needs to have a min of 6 characters");
-		}
+		// if(password.length < 6){
+		// 	alert("Password needs to have a min of 6 characters");
+		// }
 		db.User.authenticate(email, password, function (err, user){
 			if(err){
 				console.log(err);
