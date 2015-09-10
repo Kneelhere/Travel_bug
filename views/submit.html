@@ -41,12 +41,20 @@
   <h1 class="text-center">Submit a Place</h1><br>
   <form class="text-center" method="post" action="/submit">
     <div>
-      <input type="text" name="user[name]" placeholder="Name">
+      <input type="text" name="place[name]" placeholder="Name">
     </div><br>
     <div>
-      <textarea type="text" name="user[description]" placeholder="Description"></textarea>
+      <textarea type="text" name="place[description]" placeholder="Description"></textarea>
     </div><br>
     <button>Submit</button>
   </form>
+    <script type="text/template" id="places-template">
+    <li class='list-group-item'><%= place[name] %>
+      <!-- Places label -->
+      <span class="label label-default"><%= place[description]%></span>
+      <!-- button w/ registered onclick function -->
+      // <button data-_id="<%= _id %>" onclick="deleteFood(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </li>
+  </script>
 </body>
 </html>
