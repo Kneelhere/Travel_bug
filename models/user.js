@@ -3,10 +3,15 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	bcrypt = require('bcrypt');
 
+var PlaceSchema = new Schema({
+	name: {type: String, required: true},
+	description: {type: String, required: true}
+});
 // the user schema
 var UserSchema = new Schema({
 	email: {type: String, required: true},
 	passwordDigest: {type: String, require: true},
+	place: [PlaceSchema],
 	createdAt: {type: Date, default: Date.now()}
 });
 
