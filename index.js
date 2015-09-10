@@ -59,6 +59,14 @@ app.get("/signup", function (req,res){
 })
 
 app.get("/profile", function(req,res){
+	// db.User.authenticate(email, password, function (err, user){
+	// 	if(err){
+	// 		console.log(err);
+	// 		return res.sendStatus(401);
+	// 	}
+	// 	req.login(user);
+	// 	res.redirect("/profile");
+	// });
 	res.sendFile(path.join(views + 'profile.html'));
 })
 
