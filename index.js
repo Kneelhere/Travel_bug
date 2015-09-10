@@ -66,6 +66,10 @@ app.get("/sf", function(req,res){
 	res.sendFile(path.join(views + 'SF.html'));
 })
 
+app.get("/submit", function (req,res){
+	res.sendFile(path.join(views + 'submit.html'));
+})
+
 //where the user submits signup form
 app.post("/signup", function signup(req,res){
 	// grabs user from the params

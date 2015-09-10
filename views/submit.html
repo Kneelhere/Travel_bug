@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit Page</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- jQuery -->
+  <script src="/static/jquery/dist/jquery.min.js"></script>
+  <!-- Underscore -->
+  <script src="/static/underscore/underscore-min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/static/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+  <form class="text-center" method="post" action="/submit">
+    <div>
+      <input type="text" name="user[name]" placeholder="Name">
+    </div><br>
+    <div>
+      <textarea type="text" name="user[description]" placeholder="Description"></textarea>
+    </div><br>
+    <button>Submit</button>
+  </form>
+</body>
+</html>
