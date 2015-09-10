@@ -3,15 +3,11 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	bcrypt = require('bcrypt');
 
-var PlaceSchema = new Schema({
-	name: {type: String, required: true},
-	description: {type: String, required: true}
-});
 // the user schema
 var UserSchema = new Schema({
 	email: {type: String, required: true},
 	passwordDigest: {type: String, require: true},
-	place: [PlaceSchema],
+	place: [/*create place for later */],
 	createdAt: {type: Date, default: Date.now()}
 });
 
@@ -52,9 +48,8 @@ UserSchema.methods.checkPassword = function (password) {
 
 // user model
 var User = mongoose.model('User', UserSchema);
-var Place = mongoose.model('Place', PlaceSchema)
 // required for elsewhere
 module.exports = User;
-module.exports = Place;
+
 
 
