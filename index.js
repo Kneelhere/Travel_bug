@@ -6,6 +6,7 @@ var path = require("path");
 var views = path.join(process.cwd(), "views/");
 var db = require("./models");
 var session = require("express-session");
+var _ = require("underscore");
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -85,21 +86,22 @@ app.post("/signup", function signup(req,res){
 	// gets email and password
 	var email = user.email;
 	var password = user.password;
-	var firstName = user.firstName;
-	var lastName = user.lastName;
 	// creates new user
-	db.User.createSecure(email, password, firstName, lastName, function(){
+	db.User.createSecure(email, password, function(err, user){
 		// if(password.length < 6){
 		// 	alert("Password needs to have a min of 6 characters");
 		// }
-		db.User.authenticate(email, password, function (err, user){
-			if(err){
-				console.log(err);
-				return res.sendStatus(401);
-			}
-			req.login(user);
-			res.redirect("/profile");
-		});
+		if(err) console.log(err);
+		req.login(user);
+		res.redirect("/profile");
+		// db.User.authenticate(email, password, function (err, user){
+		// 	if(err){
+		// 		console.log(err);
+		// 		return res.sendStatus(401);
+		// 	}
+		// 	req.login(user);
+		// 	res.redirect("/profile");
+		// });
 	});
 });
 
@@ -113,6 +115,32 @@ app.post("/login", function login(req,res){
 	});
 });
 
+app.post("/sf", function create(req,res){
+	var name = req.body.place.name;
+	var description = req.body.place.description;
+	var newPlace = {name: name, description: description};
+
+	db.Place.create(newPlace, function(err, place){
+		if (err) {
+			console.log(err);
+			return res.sendStatus(400);
+		}
+	res.send(place);
+	// console.log(place);
+	})
+});
+
 var listener = app.listen(3000, function(){
 	console.log("Listening on port " + listener.address().port);
 });
+
+
+
+
+
+
+
+
+
+
+

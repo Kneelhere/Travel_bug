@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!-- jQuery -->
-  	<script src="/static/jquery/dist/jquery.min.js"></script>
+  <script src="/static/jquery/dist/jquery.min.js"></script>
 	<!-- Underscore -->
 	<script src="/static/underscore/underscore-min.js"></script>
 	<!-- Bootstrap JS -->
@@ -25,7 +25,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Sign Up</a>
+      <a class="navbar-brand" href="#"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,7 +44,22 @@
   </div><!-- /.container-fluid -->
 </nav> <br><br><br><br>
 	<h1 class="text-center"> San Francisco </h1>
-    <ul class="list-group" id="place-ul">
+    <form id="new-place-form" class="text-center" method="post" action="/sf">
+    <div>
+      <input type="text" name="place[name]" placeholder="Name">
+    </div><br>
+    <div>
+      <textarea type="text" name="place[description]" placeholder="Description"></textarea>
+    </div><br>
+    <button type="submit">Submit</button>
+  </form>
+    <script type="text/template" id="places-template">
+    <li class='list-group-item'><%= name %>
+      <!-- Places label -->
+      <span class="label label-default"><%= description%></span>
+    </li>
+  </script>
+  <ul class="list-group" id="place-ul">
   </ul>
 </body>
 </html>

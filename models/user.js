@@ -12,7 +12,7 @@ var UserSchema = new Schema({
 });
 
 //create a new user with a hashed password
-UserSchema.statics.createSecure = function (email, password, firstName, lastName, cb){
+UserSchema.statics.createSecure = function (email, password, cb){
 	//references the schema
 	var _this = this;
 	bcrypt.genSalt(function(err, salt){

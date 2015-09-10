@@ -12,7 +12,6 @@
   <!-- Bootstrap JS -->
   <script src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/static/bootstrap/dist/css/bootstrap.css">
-  <script src"/vendor/js/app.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -40,14 +39,14 @@
   </div><!-- /.container-fluid -->
 </nav> <br><br><br>
   <h1 class="text-center">Submit a Place</h1><br>
-  <form class="text-center" method="post" action="/submit">
+  <form id="new-place-form" class="text-center" method="post" action="/submit">
     <div>
       <input type="text" name="place[name]" placeholder="Name">
     </div><br>
     <div>
       <textarea type="text" name="place[description]" placeholder="Description"></textarea>
     </div><br>
-    <button>Submit</button>
+    <button type="submit">Submit</button>
   </form>
     <script type="text/template" id="places-template">
     <li class='list-group-item'><%= place[name] %>
