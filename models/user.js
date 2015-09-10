@@ -7,13 +7,10 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
 	email: {type: String, required: true},
 	passwordDigest: {type: String, require: true},
+	firstName: {type: String, require: true},
+	lastName: {type: String, require: true},
 	createdAt: {type: Date, default: Date.now()}
 });
-
-// var PlaceSchema = new Schema({
-// 	place: {type: String, required: true},
-// 	description: {type: String, required: true},
-// });
 
 //create a new user with a hashed password
 UserSchema.statics.createSecure = function (email, password, firstName, lastName, cb){
@@ -52,8 +49,5 @@ UserSchema.methods.checkPassword = function (password) {
 
 // user model
 var User = mongoose.model('User', UserSchema);
-// places model
-// var Place = mongoose.model('Place', PlaceSchema);
 // required for elsewhere
 module.exports = User;
-// module.exports = Place;
