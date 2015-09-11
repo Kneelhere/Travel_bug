@@ -16,7 +16,7 @@ function pageLoad() {
 
 function getPlaces() {
 	$.get("/sf", funnction(res){
-		var foods = res.reverse();
+		var places = res.reverse();
 		renderPlaces(places)
 	});
 }
@@ -26,6 +26,7 @@ function renderPlaces(places){
 	placesName = places.map(function(place){
 		return template(place);
 	})
-	$("#place-ul").html("");
+	// $("#place-ul").html("");
 	$("#place-ul").append(placesName);
+	console.log(placesName);
 }

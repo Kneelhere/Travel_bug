@@ -7,6 +7,9 @@ var views = path.join(process.cwd(), "views/");
 var db = require("./models");
 var session = require("express-session");
 var _ = require("underscore");
+var ejs = require('ejs');
+
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -72,7 +75,7 @@ app.get("/profile", function(req,res){
 })
 
 app.get("/sf", function(req,res){
-	res.sendFile(path.join(views + 'SF.html'));
+	res.render('SF.ejs', {name: name, description: description});
 })
 
 app.get("/submit", function (req,res){
@@ -126,7 +129,8 @@ app.post("/sf", function create(req,res){
 			return res.sendStatus(400);
 		}
 	res.send(place);
-	// console.log(place);
+	console.log(place);
+	// res.redirect("/sf");
 	})
 });
 
