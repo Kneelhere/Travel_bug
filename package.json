@@ -27,5 +27,5 @@
     "mongoose": "^4.1.5",
     "nodemon": "^1.4.1",
     "underscore": "^1.8.3"
-  },
+  }
 }
