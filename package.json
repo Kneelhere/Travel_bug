@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "postinstall": "bower install"   // <---- only need this line if you're using Bower
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
