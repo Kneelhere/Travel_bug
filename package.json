@@ -19,10 +19,16 @@
   "dependencies": {
     "bcrypt": "^0.8.5",
     "body-parser": "^1.13.3",
+    "bower": "^1.5.2",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "mongoose": "^4.1.5",
+    "nodemon": "^1.4.1",
     "underscore": "^1.8.3"
-  }
+  },
+  "scripts": {
+    "start": "node index.js",
+    "postinstall": "bower install"   // <---- only need this line if you're using Bower
+   }
 }
