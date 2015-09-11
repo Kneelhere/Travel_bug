@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node index.js",
     "postinstall": "bower install"   // <---- only need this line if you're using Bower
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
