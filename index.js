@@ -75,7 +75,8 @@ app.get("/profile", function(req,res){
 })
 
 app.get("/sf", function(req,res){
-	res.render('SF.ejs', {name: name, description: description});
+	res.sendFile(path.join(views + 'sf.html'));
+	//console.log(name);
 })
 
 //where the user submits signup form
