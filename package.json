@@ -4,6 +4,8 @@
   "description": "WDI 21 SF - Project One DESCRIPTION",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "postinstall": "bower install"   // <---- only need this line if you're using Bower
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,8 +29,4 @@
     "nodemon": "^1.4.1",
     "underscore": "^1.8.3"
   },
-  "scripts": {
-    "start": "node index.js",
-    "postinstall": "bower install"   // <---- only need this line if you're using Bower
-   }
 }
