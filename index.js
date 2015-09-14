@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use("/vendor", express.static("public"));
 app.use("/static", express.static("bower_components"));
 
+// it: it is advised to use a key generator npm to create an app secret.
+
 // create a session
 app.use(
 	session({
